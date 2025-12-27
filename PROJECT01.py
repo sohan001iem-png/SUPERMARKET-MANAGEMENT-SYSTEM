@@ -109,6 +109,7 @@ def show_bill_gui(bill):
 def create_bill_pdf(bill,filename):
         from reportlab.lib.pagesizes import A4
         from reportlab.pdfgen import canvas
+        bill_date=bill["datetime"].strftime("%d-%m-%Y %H:%M:%S")
         c=canvas.Canvas(filename,pagesize=A4)
         width,height=A4
         y=height-50
@@ -121,6 +122,8 @@ def create_bill_pdf(bill,filename):
         c.drawString(40,y,f"Mobile:{bill['mobile']}")
         y-=15
         c.drawString(40,y,f"Order ID:{bill['order_id']}")
+        y-=15
+        c.drawString(40,y,f"Date: {bill_date}")
         y-=30
         c.drawString(40,y,"Item")
         c.drawString(200,y,"Qty")
