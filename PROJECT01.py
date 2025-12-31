@@ -297,7 +297,7 @@ def mail_validity():#return valid email id
                 else:
                         return(mail)
 def send_mail(mail,x,s):#function to send mail to customer
-        sender_email='sohan.project29@gmail.com'
+        sender_email='sender_mail@gmail.com'
         sender_password=os.getenv("MAIL_PASSWORD")
         if s in("OTP","USER ID"):
                 if s=="OTP":#mail sent as otp to customer
@@ -638,3 +638,4 @@ def Market_Management():
         except Exception as E:
                 messagebox.showerror("Application Error",str(E))
 Market_Management()
+
