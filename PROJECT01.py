@@ -7,6 +7,9 @@ import random#to generate otp, order id, customer id
 import datetime#to input current date and time on system
 import csv
 import os
+import sys
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
 if getattr(sys, 'frozen', False):
         BASE_DIR = os.path.dirname(sys.executable)
 else:
@@ -107,8 +110,7 @@ def show_bill_gui(bill):
         tk.Label(win,text=f"Rupees {num_to_words(round(bill['total']))} only",font=("Arial",10,"italic")).pack(pady=5)      
         tk.Label(win,text="THANK YOU, PLEASE VISIT AGAIN!",font=("Arial",12,"bold")).pack(pady=10)
 def create_bill_pdf(bill,filename):
-        from reportlab.lib.pagesizes import A4
-        from reportlab.pdfgen import canvas
+
         bill_date=bill["datetime"].strftime("%d-%m-%Y %H:%M:%S")
         c=canvas.Canvas(filename,pagesize=A4)
         width,height=A4
